@@ -1,0 +1,61 @@
+2023-06-04 16:35:31,729 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-04 16:53:00,853 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-04 19:28:18,378 ERROR IN Viewing: get_all_data function error 'function' object is not subscriptable
+2023-06-04 19:30:54,248 ERROR IN Viewing: get_all_data function error 'tuple' object has no attribute 'startswith'
+2023-06-04 19:32:12,855 ERROR IN Viewing: get_all_data function error 0
+2023-06-04 19:33:49,903 ERROR IN Viewing: get_all_data function error sequence item 0: expected str instance, NoneType found
+2023-06-04 19:40:36,070 ERROR IN Viewing: get_all_data function error sequence item 0: expected str instance, dict found
+2023-06-05 09:12:23,487 ERROR IN Viewing: get_all_data function error 'custom_tag' is not a registered tag library. Must be one of:
+admin_list
+admin_menu
+admin_modify
+admin_urls
+adminlte_helpers
+cache
+i18n
+l10n
+log
+static
+tz
+2023-06-05 10:09:52,881 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:10:55,082 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:10:58,000 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:11:07,655 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:12:19,933 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:12:28,619 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:12:31,581 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:12:33,640 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:12:35,704 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:13:21,439 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:14:29,950 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:14:37,695 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:18:37,903 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 10:18:39,368 ERROR IN Viewing: get_all_data function error Invalid block tag on line 32: 'menu2', expected 'endblock'. Did you forget to register or load this tag?
+2023-06-05 12:31:39,835 ERROR IN Viewing: get_all_data function error Invalid block tag on line 46: 'static'. Did you forget to register or load this tag?
+2023-06-05 13:10:51,686 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-05 13:11:11,037 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-05 13:12:45,440 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-05 17:15:08,251 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-05 17:48:43,618 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-05 17:49:30,807 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-05 18:06:30,787 INFO view file: success! tes1_r3_converted.xml
+2023-06-06 12:06:11,909 INFO view file: success! demo2_r3_converted.xml
+2023-06-07 12:30:47,633 INFO demo6.xml
+2023-06-07 12:30:47,645 INFO file conversion: success! demo6.xml
+2023-06-07 14:16:47,671 INFO demo2.xml
+2023-06-07 14:16:47,683 INFO file conversion: success! demo2.xml
+2023-06-08 11:11:39,833 INFO demo7.xml
+2023-06-08 11:11:39,867 INFO file conversion: success! demo7.xml
+2023-06-08 11:12:04,282 INFO demo9.xml
+2023-06-08 11:12:04,318 INFO file conversion: success! demo9.xml
+2023-06-10 11:10:18,250 INFO demo10.xml
+2023-06-10 11:10:18,281 INFO file conversion: success! demo10.xml
+2023-06-12 14:05:12,316 ERROR IN Viewing: get_all_data function error 'Add_Profile' object is not iterable
+2023-06-12 14:05:15,372 ERROR IN Viewing: get_all_data function error 'Add_Profile' object is not iterable
+2023-06-12 14:05:16,402 ERROR IN Viewing: get_all_data function error 'Add_Profile' object is not iterable
+2023-06-12 14:05:18,219 ERROR IN Viewing: get_all_data function error 'Add_Profile' object is not iterable
+2023-06-15 12:11:53,958 INFO test2.xml
+2023-06-15 12:11:53,980 INFO file conversion: success! test2.xml
+2023-06-16 10:19:53,394 INFO Download file: success! test2_r3_converted.xml
+2023-06-16 13:30:37,990 INFO demo3.xml
+2023-06-16 13:30:38,008 INFO file conversion: success! demo3.xml

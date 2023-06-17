@@ -1,0 +1,45 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+{% load admin_menu %}
+{% load custom_tag %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+{% block nav_links %}
+<style>
+    .nav-sidebar .menu-open>.nav-link i.right{
+        transform: rotate(92deg);
+        }
+
+    .nav-pills .nav-link:not(.active):hover, .nav-item :hover {
+          color: #bdadb4;
+     }
+
+</style>
+<!--<li class="nav-item"><a href="/convert/" class="nav-link active"><i class="nav-icon fas fa-tachometer-alt"></i> <p>Home</p></a></li>-->
+<!--<li class="nav-item has-treeview"><a href="#" class="nav-link"><i class="nav-icon fas fa-edit"></i> <p>CPV Console</p><p><i class="fas fa-angle-right right"></i></p></a>-->
+<!--<ul class="nav nav-treeview"><li class="nav-item has-treeview"><a href="#" class="nav-link"><i class="nav-icon fas fa-edit"></i> <p>Access Control</p><p><i class="fas fa-angle-right right"></i></p></a>-->
+<!--<ul class="nav nav-treeview">-->
+<!--<li class="nav-item"><a href="/admin/auth/group/" class="nav-link"><i class="far fa-circle nav-icon"></i> Groups</a></li><li class="nav-item"><a href="/admin/auth/user/" class="nav-link"><i class="far fa-circle nav-icon"></i> Users</a></li></ul></li>-->
+<!--<li class="nav-item has-treeview"><a href="#" class="nav-link"><i class="nav-icon fas fa-edit"></i> <p>ConvertPV</p><p><i class="fas fa-angle-left right"></i></p></a><ul class="nav nav-treeview">-->
+<!--<li class="nav-item"><a href="/admin/convertpvs/add_profile/" class="nav-link"><i class="far fa-circle nav-icon"></i> Add Profile</a></li><li class="nav-item"><a href="/admin/convertpvs/audit_log/" class="nav-link"><i class="far fa-circle nav-icon"></i> Audit Log</a></li></ul></li>-->
+<!--<li class="nav-item has-treeview"><a href="#" class="nav-link"><i class="nav-icon fas fa-edit"></i> <p>Schedular Results</p><p><i class="fas fa-angle-left right"></i></p></a><ul class="nav nav-treeview">-->
+<!--<li class="nav-item"><a href="/admin/django_celery_results/groupresult/" class="nav-link"><i class="far fa-circle nav-icon"></i> Group results</a></li><li class="nav-item"><a href="/admin/django_celery_results/taskresult/" class="nav-link"><i class="far fa-circle nav-icon"></i> Task results</a></li></ul></li>-->
+<!--<li class="nav-item has-treeview"><a href="#" class="nav-link"><i class="nav-icon fas fa-edit"></i> <p>Schedular Tasks</p><p><i class="fas fa-angle-left right"></i></p></a><ul class="nav nav-treeview">-->
+<!--<li class="nav-item"><a href="/admin/django_celery_beat/clockedschedule/" class="nav-link"><i class="far fa-circle nav-icon"></i> Clocked</a></li><li class="nav-item"><a href="/admin/django_celery_beat/crontabschedule/" class="nav-link"><i class="far fa-circle nav-icon"></i> Crontabs</a></li><li class="nav-item"><a href="/admin/django_celery_beat/intervalschedule/" class="nav-link"><i class="far fa-circle nav-icon"></i> Intervals</a></li><li class="nav-item"><a href="/admin/django_celery_beat/periodictask/" class="nav-link"><i class="far fa-circle nav-icon"></i> Periodic tasks</a></li><li class="nav-item"><a href="/admin/django_celery_beat/solarschedule/" class="nav-link"><i class="far fa-circle nav-icon"></i> Solar events</a></li></ul></li></ul></li>-->
+
+     {% autoescape off %}{% menu2 %}{% endautoescape %}
+
+      {% comment %} {% autoescape off %}{% menu %}{% endautoescape %}{% endcomment %}
+
+
+
+
+
+
+
+
+
+
+{% endblock nav_links %}
+

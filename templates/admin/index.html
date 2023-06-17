@@ -1,0 +1,362 @@
+{% extends "admin/base_site.html" %}
+{% load admin_menu %}
+
+{% load i18n admin_urls static admin_list %}
+
+<!-- Page title-->
+{% block title_outer %}
+        <title>{% block title %}Home | ConvertPV Portal{% endblock %}</title>
+    {% endblock %}
+
+<!--Page stylesheet link --->
+{% block extrastyle %}
+{{ block.super }}
+ <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dashboard.css' %}" />
+
+{% endblock %}
+
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+{% if not is_popup %}
+
+<!--you can add css -->
+{% block breadcrumbs %}
+
+<style>
+
+</style>
+{% endblock %}
+{% endif %}
+
+{% block stylesheets %}
+        {% include 'adminlte/lib/_styles.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script type="text/javascript">
+function downloadall(){
+    if ($('.right_select:checked').length < 1)
+    {
+        alert('No files selected for Download');
+        return;
+    }
+    var numChecked = $('.right_select:checked')[0].value;
+    var file_names;
+    for (var i =0; i<$('.right_select:checked').length; i++){
+        if (file_names==null){
+            file_names = $('.right_select:checked')[i].value;
+        }
+        else{
+            file_names += ","+$('.right_select:checked')[i].value
+        }
+    }
+            $.ajax({
+url: "downloadzip/",
+xhrFields: {
+        responseType: 'blob'
+    },
+type: 'get',
+    data:{
+             post_id: file_names
+    },
+success: function(data) {
+    var a = document.createElement('a');
+        var url = window.URL.createObjectURL(data);
+        a.href = url;
+        a.download = 'SelectedFiles.zip';
+        document.body.append(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+},
+failure: function(data) {
+    alert('Encountered an error');
+}
+});
+
+    }
+function convertfiles(){
+    if ($('.left_select:checked').length < 1)
+    {
+        alert('Please! Select file to convert');
+        return;
+    }
+    var numChecked = $('.left_select:checked')[0].value;
+    var file_names;
+    for (var i =0; i<$('.left_select:checked').length; i++){
+        if (file_names==null){
+            file_names = $('.left_select:checked')[i].value;
+        }
+        else{
+            file_names += ","+$('.left_select:checked')[i].value
+        }
+    }
+            $.ajax({
+               url: "convert/",
+                type: 'GET',
+                data:{
+                    post_id: file_names
+                },
+                success: function(data) {
+                    location.reload();
+                },
+                failure: function(data) {
+                    location.reload();
+                }
+                });
+
+    }
+    {
+        $('.right_select').click(function() {
+    alert("Hi");
+            var numChecked = $('.right_select:checked').length;
+            if (numChecked == 1) {
+                var id = $('.right_select:checked')[0].id;
+                var temp = "downloadButton".concat(id.slice(8));
+                var vtemp = "jsonView".concat(id.slice(8));
+
+
+                $(".downbtn ").prop('disabled', true);
+                $(".json-check").prop('disabled', true);
+                $(document.getElementById(temp)).attr('disabled', false);
+                $(document.getElementById(vtemp)).attr('disabled', false);
+
+            }
+            else if (numChecked > 1) {
+                $(".downbtn").prop('disabled', true);
+                $(".json-check").prop('disabled', true);
+            }
+            else {
+                $(".downbtn").prop('disabled', false);
+                $(".json-check").prop('disabled', false);
+            }
+        });
+
+
+        $('.left_select').click(function () {
+
+            var numChecked = $('.left_select:checked').length;
+            if (numChecked == 1) {
+                var id = $('.left_select:checked')[0].id;
+                var temp = "xmlView".concat(id.slice(9));
+
+                $(".xml-check").prop('disabled', true);
+                $(document.getElementById(temp)).attr('disabled', false);
+
+
+            }
+            else if (numChecked > 1) {
+                $(".xml-check").prop('disabled', true);
+            }
+            else {
+                $(".xml-check").prop('disabled', false);
+            }
+        });
+
+
+        $('#xml-all-checkbox').click(function () {
+            if ($(this).is(':checked')) {
+                $(".left_select").prop('checked', true)
+                $(".xml-check").prop('disabled', true);
+            }
+            else {
+                $(".left_select").prop('checked', false)
+                $(".xml-check").prop('disabled', false);
+            }
+        });
+
+        $('#json-all-checkbox').click(function () {
+            if ($(this).is(':checked')) {
+                $(".right_select").prop('checked', true)
+                $(".downbtn").prop('disabled', true);
+                $(".json-check").prop('disabled', true);
+            }
+            else {
+                $(".right_select").prop('checked', false)
+                $(".downbtn").prop('disabled', false);
+                $(".json-check").prop('disabled', false);
+            }
+        });
+
+
+    }
+
+</script>
+
+<div style="display: inline-flex;padding-left: 37%;">
+
+
+    <label >Select Profile&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <div class="selectdrop">
+        <select name="profile" id="profile" style="width:200px;margin-right:8%; margin-bottom:1%;">
+
+            <option value="{{allprofile.profile_name}}">{{ allprofile.0.profile_name }}</option>
+
+
+        </select>
+
+    </div>
+</div><br>
+    <div class="container-fluid">
+  <div class="row">
+    <div class="col-5" style="width:45%;padding: 0px;">
+        <div>
+            <form method="post" id="a-form"  >
+                {% csrf_token %}
+                <div class="card" style="border: 3px solid rgb(131 35 1);">
+                    <div  style="padding-bottom: 0px;">
+                        <h5 class="card-title" style="text-align: center; margin-left: 35%;">R2 XML FILES</h5>
+                            <br>
+                        <div class="box" style="overflow: scroll; height: 60vh;overflow-x: auto;">
+                            <div class="box1" style="height: 100%;">
+
+                                <table   style="width: 100%;">
+                                    <thead>
+                                        <tr class="text-white" style="position: sticky; top: 0;background-color:rgb(131 35 1);">
+                                            <th scope="col">#</th>
+                                            <th scope="col"><label><input type="checkbox" id="xml-all-checkbox" style="all:revert;"  />All</label></th>
+                                            <th scope="col">File Name</th>
+                                            <th scope="col">Size</th>
+                                            <th scope="col" style="width: 105px;">Date Time</th>
+                                            <th scope="col">View</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {% for i in r2_files %}
+                                        <tr>
+
+                                            <th scope="row">{{ forloop.counter }}</th>
+                                            <td ><input type="checkbox" id="xml_check{{forloop.counter}}"  value={{i.0}}  class="left_select"  name="file{{ forloop.counter }}" style="all:revert;" ></td>
+
+                                            {% for j in i %}
+
+                                                <td style="word-wrap:break-word;"> {{ j }} </td>
+
+                                            {% endfor %}
+<!--                                            <td><button type="button" class="xml-check" id="xmlView{{forloop.counter}}" style="background: #3f3fc6;">-->
+                                            <td><button type="button" class="btn btn-primary xml-check" id="xmlView{{forloop.counter}}" style="padding: 10%; border: 1px solid black;background: #ffffff; margin-top: 3px; margin-bottom: 4px;">
+
+                                                <a href="{{i.0}}/r2" target="_blank" style="text-decoration:none; color:#832301">view</a></button></td>
+                                        </tr>
+                                        {% endfor %}
+
+                                        <input type="hidden" name="number" value="{{ r2_count }}">
+
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer" style="height: 9vh; padding: 0px;border-top: 1px solid rgb(194, 181, 181);">
+                        <div class="p-2" style="position: absolute;left:5%;">
+                        <small class="text-muted">Total Files : <b>{{r2_count}}</b></small>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+    </div>
+    <div class="col-1" style="width:10% ; margin: 0px;padding:0px;">
+       <div class="centered-element"  style="position: absolute; width: 10%;
+
+       top: 40%;">
+                  <center>  <button onclick="convertfiles()"  class="btn w-auto m-3 " style="background-color:rgb(131 35 1); color:white"><b>Convert</b></button></center>
+
+                </div>
+    </div>
+    <div class="col-6" style="width:45%;padding: 0px;">
+                  <div >
+                <div class="card" style="border: 3px solid rgb(131 35 1);">
+                    <div  style="padding-bottom: 0px;">
+                        <h5 class="card-title" style="text-align: center;margin-left:45%">R3 XML Files</h5>
+                            <br>
+
+                        <div class="box" style="overflow: scroll; height: 60vh;overflow-x: auto;">
+                            <div class="box1">
+
+                                <table style="width: 100%;">
+                                    <thead>
+                                        <tr class="text-white" style="background-color:rgb(131 35 1); position: sticky; top: 0 ">
+                                            <th scope="col">#</th>
+                                            <th scope="col"><label><input type="checkbox" id="json-all-checkbox" style="all:revert;"  />All</label></th>
+                                            <th scope="col" >File Name</th>
+                                            <th scope="col">Size</th>
+                                            <th scope="col" style="width: 105px;">Date Time</th>
+
+                                            <th scope="col">View</th>
+                                            <th scope="col">Downloads</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+
+                                        {% for i in r3_files %}
+                                        <tr>
+                                            <th scope="row">{{ forloop.counter }}</th>
+                                            <td ><input type="checkbox" class="right_select" id="rt-check{{forloop.counter}}" value={{i.0}} name="json_file{{forloop.counter}}" style="all:revert;"></td>
+
+
+                                            {% for j in i %}
+
+                                                    <td style="word-wrap:break-word; max-width: 200px;"> {{ j }} </td>
+                                            {% endfor %}
+                                                <td><button type="button" class=" btn btn-primary json-check" id="jsonView{{forloop.counter}}" style="border: 1px solid black;background: #ffffff;   padding: 10%;">
+                                                <a href="{{i.0}}/r3" target="_blank" style="text-decoration:none; color:#832301">view</a></button></td>
+
+                                                <td>
+                                                        <button type="button"    class="btn w-auto m-1 downbtn " id="downloadButton{{forloop.counter}}" style="border: 1px solid black;background: #ffffff;    padding: 5%;">
+                                                <a href="{{i.0}}/r3/r3" target="_blank" style="text-decoration:none; color:#832301">Download</a></button>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="display:flex; height: 9vh;border-top: 1px solid rgb(194, 181, 181);padding: 0px; justify-content: space-between;">
+                        <div class="p-2" style="display: inline-block;width: 100%;">
+                        <small class="text-muted" id="no_of_file" style="position: absolute;left:5%;">Total Files : <b>{{ r3_count }}</b></small>
+                         <div style="display: inline-;position: absolute;right: 6%;"><button type="reset" class="btn w-auto m-1 " style="background-color:#861717;color:white" disabled><b>Validate</b></button>
+
+                         <button type="submit" onclick="downloadall()" class="btn w-auto m-1 " style="background-color:#861717;color:white" data-bs-dismiss="modal"  >Download Selected</button>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+
+
+
+    {% endblock %}

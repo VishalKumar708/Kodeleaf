@@ -1,0 +1,77 @@
+App: adminlte3
+App: adminlte3_theme
+App: admin
+Model: LogEntry
+URL: /admin/admin/logentry
+
+App: auth
+Model: Permission
+URL: /admin/auth/permission
+
+Model: Group
+URL: /admin/auth/group
+
+Model: User
+URL: /admin/auth/user
+
+App: contenttypes
+Model: ContentType
+URL: /admin/contenttypes/contenttype
+
+App: sessions
+Model: Session
+URL: /admin/sessions/session
+
+App: messages
+App: staticfiles
+App: convertpvs
+Model: Add_Profile
+URL: /admin/convertpvs/add_profile
+
+Model: audit_log
+URL: /admin/convertpvs/audit_log
+
+App: django_celery_results
+Model: TaskResult
+URL: /admin/django_celery_results/taskresult
+
+Model: ChordCounter
+URL: /admin/django_celery_results/chordcounter
+
+Model: GroupResult
+URL: /admin/django_celery_results/groupresult
+
+App: django_celery_beat
+Model: SolarSchedule
+URL: /admin/django_celery_beat/solarschedule
+
+Model: IntervalSchedule
+URL: /admin/django_celery_beat/intervalschedule
+
+Model: ClockedSchedule
+URL: /admin/django_celery_beat/clockedschedule
+
+Model: CrontabSchedule
+URL: /admin/django_celery_beat/crontabschedule
+
+Model: PeriodicTasks
+URL: /admin/django_celery_beat/periodictasks
+
+Model: PeriodicTask
+URL: /admin/django_celery_beat/periodictask
+
+-------------------------------------------Test login
+App: adminlte3
+App: adminlte3_theme
+App: admin
+App: auth
+App: contenttypes
+App: sessions
+App: messages
+App: staticfiles
+App: convertpvs
+Model: audit_log
+URL: /admin/convertpvs/audit_log
+
+App: django_celery_results
+App: django_celery_beat
