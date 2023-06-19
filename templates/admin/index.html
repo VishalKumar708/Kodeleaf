@@ -41,6 +41,77 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     <script type="text/javascript">
+    window.onload = function() {
+     $('#xml-all-checkbox').click(function () {
+            if ($(this).is(':checked')) {
+                $(".left_select").prop('checked', true)
+                $(".xml-check").prop('disabled', true);
+            }
+            else {
+                $(".left_select").prop('checked', false)
+                $(".xml-check").prop('disabled', false);
+            }
+        });
+
+        $('#json-all-checkbox').click(function () {
+            if ($(this).is(':checked')) {
+                $(".right_select").prop('checked', true)
+                $(".downbtn").prop('disabled', true);
+                $(".json-check").prop('disabled', true);
+            }
+            else {
+                $(".right_select").prop('checked', false)
+                $(".downbtn").prop('disabled', false);
+                $(".json-check").prop('disabled', false);
+            }
+        });
+
+
+        $('.right_select').click(function() {
+            var numChecked = $('.right_select:checked').length;
+            if (numChecked == 1) {
+                var id = $('.right_select:checked')[0].id;
+                var temp = "downloadButton".concat(id.slice(8));
+                var vtemp = "jsonView".concat(id.slice(8));
+
+
+                $(".downbtn ").prop('disabled', true);
+                $(".json-check").prop('disabled', true);
+                $(document.getElementById(temp)).attr('disabled', false);
+                $(document.getElementById(vtemp)).attr('disabled', false);
+
+            }
+            else if (numChecked > 1) {
+                $(".downbtn").prop('disabled', true);
+                $(".json-check").prop('disabled', true);
+            }
+            else {
+                $(".downbtn").prop('disabled', false);
+                $(".json-check").prop('disabled', false);
+            }
+        });
+
+
+        $('.left_select').click(function () {
+
+            var numChecked = $('.left_select:checked').length;
+            if (numChecked == 1) {
+                var id = $('.left_select:checked')[0].id;
+                var temp = "xmlView".concat(id.slice(9));
+
+                $(".xml-check").prop('disabled', true);
+                $(document.getElementById(temp)).attr('disabled', false);
+
+
+            }
+            else if (numChecked > 1) {
+                $(".xml-check").prop('disabled', true);
+            }
+            else {
+                $(".xml-check").prop('disabled', false);
+            }
+        });
+}
 function downloadall(){
     if ($('.right_select:checked').length < 1)
     {
@@ -113,81 +184,6 @@ function convertfiles(){
                 });
 
     }
-    {
-        $('.right_select').click(function() {
-    alert("Hi");
-            var numChecked = $('.right_select:checked').length;
-            if (numChecked == 1) {
-                var id = $('.right_select:checked')[0].id;
-                var temp = "downloadButton".concat(id.slice(8));
-                var vtemp = "jsonView".concat(id.slice(8));
-
-
-                $(".downbtn ").prop('disabled', true);
-                $(".json-check").prop('disabled', true);
-                $(document.getElementById(temp)).attr('disabled', false);
-                $(document.getElementById(vtemp)).attr('disabled', false);
-
-            }
-            else if (numChecked > 1) {
-                $(".downbtn").prop('disabled', true);
-                $(".json-check").prop('disabled', true);
-            }
-            else {
-                $(".downbtn").prop('disabled', false);
-                $(".json-check").prop('disabled', false);
-            }
-        });
-
-
-        $('.left_select').click(function () {
-
-            var numChecked = $('.left_select:checked').length;
-            if (numChecked == 1) {
-                var id = $('.left_select:checked')[0].id;
-                var temp = "xmlView".concat(id.slice(9));
-
-                $(".xml-check").prop('disabled', true);
-                $(document.getElementById(temp)).attr('disabled', false);
-
-
-            }
-            else if (numChecked > 1) {
-                $(".xml-check").prop('disabled', true);
-            }
-            else {
-                $(".xml-check").prop('disabled', false);
-            }
-        });
-
-
-        $('#xml-all-checkbox').click(function () {
-            if ($(this).is(':checked')) {
-                $(".left_select").prop('checked', true)
-                $(".xml-check").prop('disabled', true);
-            }
-            else {
-                $(".left_select").prop('checked', false)
-                $(".xml-check").prop('disabled', false);
-            }
-        });
-
-        $('#json-all-checkbox').click(function () {
-            if ($(this).is(':checked')) {
-                $(".right_select").prop('checked', true)
-                $(".downbtn").prop('disabled', true);
-                $(".json-check").prop('disabled', true);
-            }
-            else {
-                $(".right_select").prop('checked', false)
-                $(".downbtn").prop('disabled', false);
-                $(".json-check").prop('disabled', false);
-            }
-        });
-
-
-    }
-
 </script>
 
 <div style="display: inline-flex;padding-left: 37%;">
@@ -196,10 +192,9 @@ function convertfiles(){
     <label >Select Profile&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;</label>
     <div class="selectdrop">
         <select name="profile" id="profile" style="width:200px;margin-right:8%; margin-bottom:1%;">
-
-            <option value="{{allprofile.profile_name}}">{{ allprofile.0.profile_name }}</option>
-
-
+            {% for i in allprofile %}
+                        <option value="{{i.profile_name}}">{{ i.profile_name }}</option>
+            {% endfor %}
         </select>
 
     </div>

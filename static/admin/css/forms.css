@@ -344,6 +344,7 @@ body.popup .submit-row {
 
 .vLargeTextField, .vXMLLargeTextField {
     width: 48em;
+    height: 5em;
 }
 
 .flatpages-flatpage #id_content {

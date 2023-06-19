@@ -18,7 +18,7 @@ app.config_from_object(settings, namespace='CELERY')
 app.conf.beat_schedule = {
         'conversion': {
             'task': 'convertpvs.tasks.schedule',
-            'schedule': crontab(hour='14', minute='*/1'),
+            'schedule': crontab(hour='*', minute='*/1'),
         }
 }
 

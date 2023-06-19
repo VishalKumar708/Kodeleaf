@@ -59,7 +59,7 @@
 }
 
 #changelist table tbody td.action-checkbox {
-    text-align: center;
+    /* text-align: center;*/
 }
 
 #changelist table tfoot {

@@ -59,3 +59,24 @@ tz
 2023-06-16 10:19:53,394 INFO Download file: success! test2_r3_converted.xml
 2023-06-16 13:30:37,990 INFO demo3.xml
 2023-06-16 13:30:38,008 INFO file conversion: success! demo3.xml
+2023-06-19 12:49:19,032 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:49:21,785 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:49:25,713 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:49:40,797 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:49:42,254 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:49:43,177 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:49:46,686 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:50:05,854 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:50:06,581 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:50:06,983 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:50:07,220 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:50:07,378 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:50:07,607 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:50:07,757 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 12:50:12,185 ERROR IN Viewing: get_all_data function error Invalid block tag on line 357: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-06-19 13:44:41,092 INFO demo4.xml
+2023-06-19 13:44:41,113 INFO file conversion: success! demo4.xml
+2023-06-19 13:57:28,020 INFO Download zip: success!
+2023-06-19 13:57:39,446 INFO Download zip: success!
+2023-06-19 14:00:14,215 INFO view file: success! demo8.xml
+2023-06-19 14:04:48,851 INFO view file: success! demo3_r3_converted.xml

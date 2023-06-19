@@ -390,6 +390,7 @@ input[type="submit"], button {
 
     .datetimeshortcuts {
         color: #ccc;
+
     }
 
     .form-row .datetime input.vDateField, .form-row .datetime input.vTimeField {
