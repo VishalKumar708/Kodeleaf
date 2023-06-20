@@ -9,10 +9,12 @@ class Add_Profile(models.Model):
     in_file_path = models.TextField()
     out_file_path = models.TextField()
     archieve_path = models.TextField()
+
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     created_by = models.CharField(max_length=50, null=True, default='admin', auto_created=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
     updated_by = models.CharField(null=True,max_length=50, default='admin', auto_created=True, editable=False)
+
 
     class Meta:
         verbose_name = "add Profile"

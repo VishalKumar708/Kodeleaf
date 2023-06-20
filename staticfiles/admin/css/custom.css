@@ -2,21 +2,13 @@
 
 
 /*-- Fonts --*/
-@font-face {
-	font-family: 'ClementePDac-ExtraLight';
-	src:url(../fonts/ClementePDac-ExtraLight.ttf) format('truetype');
-}
-@font-face {
-	font-family: 'ClementePDai-Regular';
-	src:url(../fonts/ClementePDai-Regular.ttf) format('truetype');
-}
+
 /*-- Fonts --*/
 
 /*-- Index-Page-Styling --*/
 
 body {
     background: url("../images/bg.png") repeat;
-	font-family: ClementePDac-ExtraLight;
 }
 
 .contact-form {

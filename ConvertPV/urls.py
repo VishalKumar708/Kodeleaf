@@ -31,6 +31,7 @@ urlpatterns = [
     path('convert/', include('convertpvs.urls')),
     path('', auth_views.LoginView.as_view(
         template_name='admin/login.html',
+        redirect_authenticated_user=True,
         extra_context={
             # option 1: provide full path
             'next': '/convert/',

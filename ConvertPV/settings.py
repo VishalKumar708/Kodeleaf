@@ -135,6 +135,8 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/'
+# redirect url after login
+LOGIN_REDIRECT_URL = '/convert/'
 # LOGIN_URL = '/'
 # celery setting
 
@@ -144,6 +146,7 @@ result_serializer = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kolkata'
 CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_EXTENDED = True
 
 
 # celery_beat setting
