@@ -3,13 +3,13 @@ from django.shortcuts import render
 from django.http import  FileResponse
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
+
 
 from .models import  Add_Profile, audit_log
 from .generatexml import generate_xml
 
 import logging
-from adminlte3_theme.templatetags.admin_menu import Menu , _Menu, icon_tag, menu_tag
+
 
 import os
 import datetime
@@ -20,18 +20,20 @@ import zipfile
 
 # folder paths
 # gloabal variables
-in_file_path,out_file_path,archieve_path,allprofiles = '', '', '', ''
+in_file_path,out_file_path,archieve_path,allprofiles,profile_name = '', '', '', '',''
 def assign_path():
-    global in_file_path,out_file_path,archieve_path,allprofiles
+    global in_file_path,out_file_path,archieve_path,allprofiles, user_profile_name
     allprofiles = Add_Profile.objects.all()
     firstprofile = Add_Profile.objects.first()
     in_file_path = ''
     out_file_path = ''
     archieve_path = ''
+    user_profile_name=''
     if firstprofile:
         in_file_path = firstprofile.in_file_path
         out_file_path = firstprofile.out_file_path
         archieve_path = firstprofile.archieve_path
+        user_profile_name = firstprofile.profile_name
 
     else:
         logger = logging.getLogger('convertpvs')
@@ -223,7 +225,7 @@ def convertfiles(request):
                     converted_time = datetime.datetime.fromtimestamp(creation_time)
 
                     # to sent data into database
-                    obj = audit_log(in_file_name=in_file, out_file_name=out_file,
+                    obj = audit_log(profile_name=user_profile_name,in_file_name=in_file, out_file_name=out_file,
                                     converted_datetime=converted_time.strftime('%d-%b-%Y %I-%M %p'), user_name=request.user.username,
                                     status=status)
                     obj.save()
@@ -234,7 +236,7 @@ def convertfiles(request):
                 else:
                     x = datetime.datetime.now()
                     status = 'Failed'
-                    obj = audit_log(in_file_name=in_file, out_file_name='null',
+                    obj = audit_log(profile_name=user_profile_name, in_file_name=in_file, out_file_name='null',
                                     converted_datetime=x.strftime('%d-%b-%Y %I-%M %p'), user_name=request.user.username,
                                     status=status)
 

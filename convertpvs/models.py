@@ -8,8 +8,7 @@ class Add_Profile(models.Model):
     profile_name = models.CharField(max_length=45, default='Pharma')
     in_file_path = models.TextField()
     out_file_path = models.TextField()
-    archieve_path = models.TextField()
-
+    archieve_path = models.TextField(verbose_name='archive path')
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     created_by = models.CharField(max_length=50, null=True, default='admin', auto_created=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
@@ -17,8 +16,8 @@ class Add_Profile(models.Model):
 
 
     class Meta:
-        verbose_name = "add Profile"
-        verbose_name_plural = "add Profiles"
+        verbose_name = "Profile"
+        verbose_name_plural = "Profiles"
 
 class audit_log(models.Model):
     cpv_audit_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False)

@@ -80,3 +80,10 @@ tz
 2023-06-19 13:57:39,446 INFO Download zip: success!
 2023-06-19 14:00:14,215 INFO view file: success! demo8.xml
 2023-06-19 14:04:48,851 INFO view file: success! demo3_r3_converted.xml
+2023-06-20 13:31:40,606 INFO demo6.xml
+2023-06-20 13:31:40,622 INFO file conversion: success! demo6.xml
+2023-06-20 14:11:46,723 INFO demo6.xml
+2023-06-20 14:11:46,742 INFO file conversion: success! demo6.xml
+2023-06-20 14:15:36,418 INFO demo5.xml
+2023-06-20 14:15:36,418 ERROR C:\Users\vs123\OneDrive\Desktop\caerus\in_folder\demo5.xml [Errno 2] No such file or directory: 'C:\\Users\\vs123\\OneDrive\\Desktop\\caerus\\in_folder\\demo5.xml'
+2023-06-20 14:15:36,431 INFO file conversion: failed! demo5.xml

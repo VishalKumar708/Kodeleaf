@@ -8,22 +8,25 @@ import logging
 
 #
 # gloabal variables
-in_file_path,out_file_path,archieve_path,allprofiles = '', '', '', ''
+in_file_path,out_file_path,archieve_path,allprofiles,profile_name = '', '', '', '', ''
 def assign_path():
-    global in_file_path,out_file_path,archieve_path,allprofiles
+    global in_file_path,out_file_path,archieve_path,allprofiles, user_profile_name
     allprofiles = Add_Profile.objects.all()
     firstprofile = Add_Profile.objects.first()
     in_file_path = ''
     out_file_path = ''
     archieve_path = ''
+    user_profile_name=''
     if firstprofile:
         in_file_path = firstprofile.in_file_path
         out_file_path = firstprofile.out_file_path
         archieve_path = firstprofile.archieve_path
+        user_profile_name = firstprofile.profile_name
 
     else:
         logger = logging.getLogger('convertpvs')
         logger.error('file path is not set.')
+
 
 logger = logging.getLogger('convertpvs')
 
@@ -45,7 +48,7 @@ def scheduled():
                 creation_time = os.path.getmtime(f'{out_file_path}\\{out_file}')  # for database(modification time)
                 x = datetime.datetime.fromtimestamp(creation_time)
                 # to sent data into database
-                obj = audit_log(in_file_name=in_file, out_file_name=out_file, converted_datetime=x.strftime('%d-%b-%Y %I-%M %p'),
+                obj = audit_log(profile_name=user_profile_name, in_file_name=in_file, out_file_name=out_file, converted_datetime=x.strftime('%d-%b-%Y %I-%M %p'),
                                 user_name='cron tab', status=status)
                 obj.save()
                 shutil.move(os.path.join(in_file_path, get_value), os.path.join(archieve_path, get_value))
@@ -53,12 +56,6 @@ def scheduled():
             else:
                 x = datetime.datetime.now()
                 status = 'Failed'
-                obj = audit_log(in_file_name=in_file, out_file_name='null', converted_datetime=x.strftime('%d-%b-%Y %I-%M %p'),
+                obj = audit_log(profile_name=user_profile_name,in_file_name=in_file, out_file_name='null', converted_datetime=x.strftime('%d-%b-%Y %I-%M %p'),
                                 user_name='cron_tab', status=status)
                 obj.save()
-    # return 'success'
-#
-#
-
-
-# scheduled()
