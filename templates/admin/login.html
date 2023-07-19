@@ -31,7 +31,7 @@
         <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
 
 
-            <input type="text" id="id_username" name="username" class="user" placeholder="Username">
+            <input type="text" id="id_username" name="username" class="user" placeholder="Email">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
             {{ form.username.errors }}
 

@@ -35,31 +35,34 @@ def menu2(context):
                 # print(f"Model----><---------: {model.__name__}")
 
                 model_names.append(model.__name__)
+                # print(model.__name__)
                 try:
                     # url = reverse(f"{app.label}:{model.__name__.lower()}_list")
 
                     url = f"{reverse('admin:index')}{app.label}/{model.__name__.lower()}"
-                    if model.__name__ == 'User' or model.__name__ == 'Group':
+                    # print(url)
+                    if model.__name__ == 'CustomUser' or model.__name__ == 'CustomGroup':
                         if accesscontrol:
                             r += '<li class="nav-item has-treeview"><a href="#" class="nav-link"><i class="nav-icon fas"></i> <p>Access Control</p><p><i class="fas fa-angle-right right"></i></p></a><ul class="nav nav-treeview">'
                             accesscontrol = False
-                        if model.__name__ == 'Group':
+                        if model.__name__ == 'CustomGroup':
                             if request.path == url + '/':
                                 r += '<li class="nav-item"><a href="' + url + '"  class="nav-link active"><i class="far fa-circle nav-icon"></i> Groups</a></li>'
                             else:
                                 r += '<li class="nav-item"><a href="' + url + '"  class="nav-link"><i class="far fa-circle nav-icon"></i> Groups</a></li>'
 
                         # print(f"App--------->: {app.label}")
-                        if model.__name__ == 'User':
+                        if model.__name__ == 'CustomUser':
                             if request.path == url + '/':
                                 r += '<li class="nav-item"><a href="' + url + '" class="nav-link active"><i class="far fa-circle nav-icon"></i> Users</a></li>'
                             else:
                                 r += '<li class="nav-item"><a href="' + url + '" class="nav-link"><i class="far fa-circle nav-icon"></i> Users</a></li>'
+
                     if model.__name__ == 'Add_Profile':
                         if request.path == url + '/':
-                            r += '<li class="nav-item"><a href="' + url + '" class="nav-link active"><i class="far fa-circle nav-icon"></i> Add Profile</a></li>'
+                            r += '<li class="nav-item"><a href="' + url + '" class="nav-link active"><i class="far fa-circle nav-icon"></i> Config Profile</a></li>'
                         else:
-                            r += '<li class="nav-item"><a href="' + url + '" class="nav-link"><i class="far fa-circle nav-icon"></i> Add Profile</a></li>'
+                            r += '<li class="nav-item"><a href="' + url + '" class="nav-link"><i class="far fa-circle nav-icon"></i> Config Profile</a></li>'
                     if model.__name__ == 'audit_log':
                         if request.path == url + '/':
                             r += '<li class="nav-item"><a href="' + url + '" class="nav-link active"><i class="far fa-circle nav-icon"></i> Audit Logs</a></li>'
@@ -85,7 +88,7 @@ def menu2(context):
                     model_urls.append(url)
                 except AttributeError:
                     continue
-        if app.label == 'auth' and accesscontrol== False:
+        if app.label == 'users' and accesscontrol== False:
             r+= '</li></ul>'
     # print('App Labels: ',app_labels)
 
@@ -94,3 +97,4 @@ def menu2(context):
     # print(request.path)
     # print(r)
     return r
+

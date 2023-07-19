@@ -59,3 +59,5 @@ def scheduled():
                 obj = audit_log(profile_name=user_profile_name,in_file_name=in_file, out_file_name='null', converted_datetime=x.strftime('%d-%b-%Y %I-%M %p'),
                                 user_name='cron_tab', status=status)
                 obj.save()
+                shutil.move(os.path.join(in_file_path, get_value), os.path.join(archieve_path, get_value))
+

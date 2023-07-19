@@ -50,7 +50,7 @@
           <img src="{% avatar_url size=90 %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block" style="color:white;">{% firstof request.user.get_full_name request.user.username %}</a>
+          <a href="#" class="d-block" style="color:white;">{% firstof request.user.first_name %}</a>
         </div>
       </div>
         {% endblock %}

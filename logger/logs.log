@@ -87,3 +87,190 @@ tz
 2023-06-20 14:15:36,418 INFO demo5.xml
 2023-06-20 14:15:36,418 ERROR C:\Users\vs123\OneDrive\Desktop\caerus\in_folder\demo5.xml [Errno 2] No such file or directory: 'C:\\Users\\vs123\\OneDrive\\Desktop\\caerus\\in_folder\\demo5.xml'
 2023-06-20 14:15:36,431 INFO file conversion: failed! demo5.xml
+2023-06-21 11:26:31,722 INFO demo10.xml
+2023-06-21 11:26:31,748 INFO file conversion: success! demo10.xml
+2023-06-22 11:41:13,712 INFO demo6.xml,demo2.xml,demo7.xml,demo9.xml,demo10.xml,demo3.xml,demo4.xml,demo5.xml,demo8.xml,tes1_r3_converted_r3_converted.xml,3.xml,tes1_r3_converted.xml,test.xml,test1.xml,test2.xml,test3.xml,tes1.xml
+2023-06-22 11:41:13,726 INFO file conversion: success! demo6.xml
+2023-06-22 11:41:13,742 INFO file conversion: success! demo2.xml
+2023-06-22 11:41:13,742 INFO file conversion: success! demo7.xml
+2023-06-22 11:41:13,742 INFO file conversion: success! demo9.xml
+2023-06-22 11:41:13,760 INFO file conversion: success! demo10.xml
+2023-06-22 11:41:13,760 INFO file conversion: success! demo3.xml
+2023-06-22 11:41:13,776 INFO file conversion: success! demo4.xml
+2023-06-22 11:41:13,776 INFO file conversion: success! demo5.xml
+2023-06-22 11:41:13,791 INFO file conversion: success! demo8.xml
+2023-06-22 11:41:13,791 INFO file conversion: success! tes1_r3_converted_r3_converted.xml
+2023-06-22 11:41:13,791 INFO file conversion: success! 3.xml
+2023-06-22 11:41:13,807 INFO file conversion: success! tes1_r3_converted.xml
+2023-06-22 11:41:13,807 INFO file conversion: success! test.xml
+2023-06-22 11:41:13,823 INFO file conversion: success! test1.xml
+2023-06-22 11:41:13,823 INFO file conversion: success! test2.xml
+2023-06-22 11:41:13,823 INFO file conversion: success! test3.xml
+2023-06-22 11:41:13,838 INFO file conversion: success! tes1.xml
+2023-06-23 11:28:33,292 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:28:34,999 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:29:18,562 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:29:19,843 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:29:20,634 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:29:20,771 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:29:20,927 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:29:21,055 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:29:21,392 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:29:46,110 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '({{' from '({{'
+2023-06-23 11:29:47,085 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '({{' from '({{'
+2023-06-23 11:30:54,809 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '({{' from '({{'
+2023-06-23 11:30:55,740 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '({{' from '({{'
+2023-06-23 11:31:29,600 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:31:30,624 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:31:31,873 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:31:32,439 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:31:54,102 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:31:55,070 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:32:22,848 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 11:32:24,032 ERROR IN Viewing: get_all_data function error Could not parse the remainder: '{{' from '{{'
+2023-06-23 12:58:08,770 INFO view file: success! 3_r3_converted.xml
+2023-06-24 14:41:27,182 ERROR file path is not set.
+2023-06-24 14:41:30,627 ERROR file path is not set.
+2023-06-24 14:41:31,911 ERROR file path is not set.
+2023-06-24 14:41:32,553 ERROR file path is not set.
+2023-06-24 14:41:33,102 ERROR file path is not set.
+2023-06-24 14:52:13,891 ERROR file path is not set.
+2023-06-24 14:52:13,907 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-24 15:41:44,034 ERROR file path is not set.
+2023-06-24 15:41:44,065 ERROR IN Viewing: get_all_data function error 'available_apps'
+2023-06-24 15:45:27,777 ERROR file path is not set.
+2023-06-24 15:46:40,528 ERROR file path is not set.
+2023-06-24 15:49:16,012 ERROR file path is not set.
+2023-06-24 15:49:39,284 ERROR file path is not set.
+2023-06-24 16:00:44,537 ERROR file path is not set.
+2023-06-24 16:02:56,262 INFO test1_r3_converted.xml
+2023-06-24 16:03:49,011 INFO test1_r3_converted.xml,3_r3_converted.xml
+2023-06-24 16:04:09,525 INFO test1_r3_converted.xml,3_r3_converted.xml,tes1_r3_converted_r3_converted.xml
+2023-06-24 16:04:18,351 INFO demo5_r3_converted.xml,demo3_r3_converted.xml,demo7_r3_converted.xml
+2023-06-24 16:05:34,205 INFO test1_r3_converted.xml,3_r3_converted.xml,tes1_r3_converted_r3_converted.xml
+2023-06-24 16:05:55,854 INFO test1_r3_converted.xml,3_r3_converted.xml,tes1_r3_converted_r3_converted.xml,tes1_r3_converted_r3_converted_r3_converted.xml
+2023-06-24 16:06:03,276 INFO test1_r3_converted.xml,3_r3_converted.xml
+2023-06-24 16:10:47,452 INFO test1_r3_converted.xml
+2023-06-24 16:12:10,685 INFO 3_r3_converted.xml,tes1_r3_converted_r3_converted.xml
+2023-06-24 16:12:10,710 INFO file conversion: success! 3_r3_converted.xml
+2023-06-24 16:12:10,726 INFO file conversion: success! tes1_r3_converted_r3_converted.xml
+2023-06-24 16:12:17,928 INFO demo3_r3_converted.xml,demo7_r3_converted.xml
+2023-06-24 16:12:17,944 INFO file conversion: success! demo3_r3_converted.xml
+2023-06-24 16:12:17,959 INFO file conversion: success! demo7_r3_converted.xml
+2023-06-24 16:12:43,348 INFO test1_r3_converted.xml
+2023-06-24 16:12:43,364 INFO file conversion: success! test1_r3_converted.xml
+2023-06-24 16:14:02,752 INFO new_new_new.xml
+2023-06-24 16:14:02,764 ERROR C:\Users\vs123\OneDrive\Desktop\caerus\in_folder\new_new_new.xml no element found: line 1, column 0
+2023-06-24 16:14:49,052 INFO new_new_new.xml
+2023-06-24 16:14:49,052 ERROR C:\Users\vs123\OneDrive\Desktop\caerus\in_folder\new_new_new.xml no element found: line 1, column 0
+2023-06-24 16:14:49,074 INFO file conversion: failed! new_new_new.xml
+2023-06-24 16:14:57,883 INFO new_new_new.xml
+2023-06-24 16:14:57,883 ERROR C:\Users\vs123\OneDrive\Desktop\caerus\in_folder\new_new_new.xml no element found: line 1, column 0
+2023-06-24 16:14:57,901 INFO file conversion: failed! new_new_new.xml
+2023-06-24 16:15:07,356 INFO new_new_new.xml
+2023-06-24 16:15:07,356 ERROR C:\Users\vs123\OneDrive\Desktop\caerus\in_folder\new_new_new.xml no element found: line 1, column 0
+2023-06-24 16:15:07,374 INFO file conversion: failed! new_new_new.xml
+2023-06-24 16:17:04,388 INFO new_new_new.xml
+2023-06-24 16:17:04,388 ERROR C:\Users\vs123\OneDrive\Desktop\caerus\in_folder\new_new_new.xml no element found: line 1, column 0
+2023-06-24 16:17:04,407 INFO file conversion: failed! new_new_new.xml
+2023-06-26 16:09:07,714 INFO view file: success! test3_r3_converted.xml
+2023-06-29 11:32:08,077 INFO Download zip: success!
+2023-06-29 17:52:17,220 INFO view file: success! new_new_new.xml
+2023-06-30 10:29:03,968 INFO 3_r3_converted.xml
+2023-06-30 10:29:03,999 INFO file conversion: success! 3_r3_converted.xml
+2023-06-30 10:29:14,879 INFO demo5_r3_converted.xml
+2023-06-30 10:29:14,903 INFO file conversion: success! demo5_r3_converted.xml
+2023-07-03 11:56:39,914 INFO tes1_r3_converted_r3_conve.xml
+2023-07-03 11:56:39,951 INFO file conversion: success! tes1_r3_converted_r3_conve.xml
+2023-07-03 11:56:46,271 INFO demo7.xml
+2023-07-03 11:56:46,304 INFO file conversion: success! demo7.xml
+2023-07-03 12:54:21,760 INFO Download file: success! test_r3_converted.xml
+2023-07-03 13:06:38,672 INFO demo4.xml
+2023-07-03 13:06:38,682 INFO file conversion: success! demo4.xml
+2023-07-03 13:33:36,027 INFO view file: success! test1_r3_converted.xml
+2023-07-03 13:33:50,344 INFO demo8.xml
+2023-07-03 13:33:50,363 INFO file conversion: success! demo8.xml
+2023-07-03 14:16:17,433 INFO test.xml,tes1_r3_converted_r3_convertedzzzzzxxxxxxxwqqwqw.xml
+2023-07-03 14:16:17,448 INFO file conversion: success! test.xml
+2023-07-03 14:16:17,448 INFO file conversion: success! tes1_r3_converted_r3_convertedzzzzzxxxxxxxwqqwqw.xml
+2023-07-03 14:36:14,575 INFO view file: success! demo3_r3_convertedasdfasdfasdfasddddddddddddddddddddddddddddddddddddddddddddddddd.xml
+2023-07-03 14:40:43,863 INFO view file: success! new_new_new.xml
+2023-07-03 14:47:30,454 INFO view file: success! test1_r3_converted.xml
+2023-07-03 14:57:58,674 INFO view file: success! new_new_new.xml
+2023-07-03 14:58:54,319 INFO view file: success! test1_r3_converted.xml
+2023-07-03 15:27:52,243 INFO view file: success! new_new_new.xml
+2023-07-03 15:28:01,728 INFO view file: success! demo2.xml
+2023-07-03 15:40:19,019 INFO view file: success! new_new_new.xml
+2023-07-03 15:40:37,401 INFO view file: success! new_new_new.xml
+2023-07-03 15:40:49,264 INFO view file: success! new_new_new.xml
+2023-07-03 15:57:28,595 INFO Download zip: success!
+2023-07-03 16:20:03,881 INFO view file: success! new_new_new.xml
+2023-07-03 16:20:17,366 INFO view file: success! demo2.xml
+2023-07-03 16:21:47,769 INFO view file: success! 3.xml
+2023-07-03 16:22:12,346 INFO view file: success! test1_r3_converted.xml
+2023-07-04 15:51:14,657 INFO view file: success! test1_r3_converted.xml
+2023-07-11 17:20:55,419 INFO view file: success! tes1.xml
+2023-07-11 17:21:01,689 INFO view file: success! test3.xml
+2023-07-11 17:22:59,105 INFO test2.xml
+2023-07-11 17:22:59,121 INFO file conversion: success! test2.xml
+2023-07-11 17:32:15,924 INFO view file: success! new_new_new.xml
+2023-07-11 17:35:05,175 INFO view file: success! new_new_new.xml
+2023-07-11 17:35:08,821 INFO view file: success! demo3_r3_convertedasdfasdfasdfasddddddddddddddddddddddddddddddddddddddddddddddddd.xml
+2023-07-11 17:35:59,445 INFO view file: success! new_new_new.xml
+2023-07-11 17:41:47,742 INFO view file: success! new_new_new.xml
+2023-07-11 17:44:01,436 INFO view file: success! new_new_new.xml
+2023-07-11 17:44:12,812 INFO view file: success! new_new_new.xml
+2023-07-11 17:44:15,723 INFO view file: success! test1_r3_converted.xml
+2023-07-11 17:44:46,827 INFO view file: success! new_new_new.xml
+2023-07-11 17:45:01,386 INFO view file: success! new_new_new.xml
+2023-07-11 17:46:02,512 INFO view file: success! demo3_r3_convertedasdfasdfasdfasddddddddddddddddddddddddddddddddddddddddddddddddd.xml
+2023-07-12 11:26:10,577 INFO new_new_new.xml
+2023-07-12 11:26:10,579 ERROR C:\Users\vs123\OneDrive\Desktop\caerus\in_folder\new_new_new.xml no element found: line 1, column 0
+2023-07-12 11:26:10,588 INFO file conversion: failed! new_new_new.xml
+2023-07-12 11:26:16,203 INFO demo3_r3_convertedasdfasdfasdfasddddddddddddddddddddddddddddddddddddddddddddddddd.xml
+2023-07-12 11:26:16,214 INFO file conversion: success! demo3_r3_convertedasdfasdfasdfasddddddddddddddddddddddddddddddddddddddddddddddddd.xml
+2023-07-12 11:26:20,878 INFO test1_r3_converted.xml
+2023-07-12 11:26:20,892 INFO file conversion: success! test1_r3_converted.xml
+2023-07-12 12:12:05,413 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:12:15,255 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:13:09,356 INFO view file: success! demo6.xml
+2023-07-12 12:13:15,037 INFO view file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 12:13:18,392 INFO view file: success! demo3_r3_convertedasdfasdfasdfasddddddddddddddddddddddddddddddddddddddddddddddddd_r3_converted.xml
+2023-07-12 12:13:52,083 INFO view file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 12:14:08,753 INFO Download file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 12:14:19,558 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:14:42,702 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:17:10,107 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:18:25,474 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:24:11,975 INFO view file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 12:24:49,362 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:25:07,864 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:25:34,129 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:26:30,757 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:27:25,290 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:29:08,779 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:29:12,926 INFO view file: success! demo6.xml
+2023-07-12 12:29:31,474 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 12:29:36,723 INFO view file: success! demo6.xml
+2023-07-12 14:17:43,411 INFO view file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 14:18:11,625 INFO view file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 14:31:34,803 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 14:36:41,835 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 14:37:04,919 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 14:47:57,777 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 14:51:41,672 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 14:52:05,342 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 14:52:29,599 INFO view file: success! demo6.xml
+2023-07-12 14:58:38,905 INFO view file: success! demo7_r3_converted.xml
+2023-07-12 15:01:42,496 INFO view file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 15:01:46,060 INFO Download file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 15:02:05,257 INFO view file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 15:02:10,422 INFO Download file: success! test1_r3_converted_r3_converted.xml
+2023-07-12 15:02:18,737 INFO view file: success! demo3_r3_convertedasdfasdfasdfasddddddddddddddddddddddddddddddddddddddddddddddddd_r3_converted.xml
+2023-07-12 15:02:23,400 INFO Download file: success! demo3_r3_convertedasdfasdfasdfasddddddddddddddddddddddddddddddddddddddddddddddddd_r3_converted.xml
+2023-07-12 15:52:38,313 INFO demo7_r3_converted.xml,demo2.xml
+2023-07-12 15:52:38,328 INFO file conversion: success! demo7_r3_converted.xml
+2023-07-12 15:52:38,344 INFO file conversion: success! demo2.xml
+2023-07-12 16:38:18,924 INFO view file: success! test3.xml
+2023-07-12 16:38:29,098 INFO view file: success! sample2.xml
+2023-07-12 16:38:33,652 INFO Download file: success! sample2.xml

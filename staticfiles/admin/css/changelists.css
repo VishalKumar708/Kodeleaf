@@ -323,6 +323,9 @@
 
 #changelist .actions label {
     display: inline-block;
+    color: black;
+    font-weight: 400;
+    padding-right: 12px
 }
 
 #changelist .actions .button {

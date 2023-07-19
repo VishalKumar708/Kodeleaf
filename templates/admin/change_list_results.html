@@ -1,6 +1,15 @@
 {% load i18n admin_urls adminlte_helpers static admin_list %}
 {% block extrahead %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css' %}">
+<style>
+  th.sorting_asc{
+    width: 0px !important;
+  }
+   th.sorting_desc{
+    width: 0px !important;
+  }
+</style>
 {% endblock %}
 
 {% if result_hidden_fields %}
@@ -17,7 +26,7 @@
           <thead>
             <tr>
               {% for header in result_headers %}
-              <th >
+              <th style="width:0px !important">
                   <span>{{ header.text|capfirst }}</span>
               </th>{% endfor %}
             </tr>
@@ -26,11 +35,11 @@
           <!--         remove table footer-->
             {% for result in results %}
             {% if result.form.non_field_errors %}
-            <tr>
+            <tr style="width:12px;">
               <td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td>
             </tr>
             {% endif %}
-            <tr class="{% cycle 'row1' 'row2' %}">{% for item in result %} {{ item }} {% endfor %}</tr>
+            <tr style="width:0px !important" class="{% cycle 'row1' 'row2' %}">{% for item in result %} {{ item }} {% endfor %}</tr>
             {% endfor %}
           </tbody>
 <!--          <tfoot>-->

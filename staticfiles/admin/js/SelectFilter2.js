@@ -89,13 +89,13 @@ Requires jQuery, core.js, and SelectBox.js.
             // <div class="selector-chosen">
             var selector_chosen = quickElement('div', selector_div);
             selector_chosen.className = 'selector-chosen';
-            var title_chosen = quickElement('h2', selector_chosen, interpolate(gettext('Chosen %s') + ' ', [field_name]));
+            var title_chosen = quickElement('h2', selector_chosen, interpolate(gettext('Selected %s') + ' ', [field_name]));
             quickElement(
                 'span', title_chosen, '',
                 'class', 'help help-tooltip help-icon',
                 'title', interpolate(
                     gettext(
-                        'This is the list of chosen %s. You may remove some by ' +
+                        'This is the list of chosen  %s. You may remove some by ' +
                         'selecting them in the box below and then clicking the ' +
                         '"Remove" arrow between the two boxes.'
                     ),

@@ -25,7 +25,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = 'django-insecure-^es4o9stea*r2hg(g@3e(va_a4r7qi*#tnvpn$ko9)5-!94-j^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1']
 
@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
     'convertpvs',
     'django_celery_results',
     'django_celery_beat',
+
 ]
+CELERY_APP_NAME = 'django celery results'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,6 +89,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# create custom user and group model
+AUTH_USER_MODEL = "users.CustomUser"
+AUTH_GROUP_MODEL = 'users.CustomGroup'
 
 
 # Password validation
@@ -112,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'GMT'
+TIME_ZONE = 'UTC'
 DATE_INPUT_FORMATS = ['%d/%m/%Y']
 
 USE_I18N = True
@@ -144,13 +150,14 @@ CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 result_serializer = 'json'
 CELERY_TASK_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Kolkata'
+CELERY_TIMEZONE = 'UTC'
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_RESULT_EXTENDED = True
 
 
 # celery_beat setting
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
+
 CELERY_BEAT_RESULT_BACKEND = 'django-db'
 
 #----------------------------- logger -------------

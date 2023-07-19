@@ -265,6 +265,8 @@ body.popup .submit-row {
     height: 35px;
     line-height: 15px;
     margin: 0 0 0 5px;
+    border: 2px solid rgb(131 35 1);
+
 }
 
 .submit-row input.default {
@@ -293,15 +295,18 @@ body.popup .submit-row {
 }
 
 .submit-row a.closelink {
-    display: inline-block;
-    background: #bbbbbb;
+        display: inline-block;
+    background: #e7e6e6;
     border-radius: 4px;
     padding: 10px 15px;
     height: 35px;
     line-height: 15px;
     margin: 0 0 0 5px;
-    color: #fff;
-}
+    color: black;
+    border: 1px solid black;
+    font-weight: normal;
+    text-decoration: none;
+}.submit-row a.closelink
 
 .submit-row a.deletelink:focus,
 .submit-row a.deletelink:hover,

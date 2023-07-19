@@ -1,0 +1,71 @@
+{% extends "admin/base_site.html" %}
+{% load i18n l10n admin_urls static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {{ media }}
+    <script src="{% static 'admin/js/cancel.js' %}" async></script>
+<style>
+    .content-wrapper>.content{
+        padding: 0 1rem;
+    }
+    .delete-confirmation form .cancel-link {
+        margin: 0 0 0 5px;
+        border: 2px solid black;
+        padding: 12px;
+        background-color: #e7e6e6;
+        color: black;
+        border-radius: 4px;
+        text-decoration:none;
+}
+
+</style>
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} delete-confirmation delete-selected-confirmation{% endblock %}
+
+
+{% block breadcrumbs %}
+<div style="float:right;">
+    <ol class="breadcrumb float-sm-right">
+<!--        remove breadcrumb-->
+        <li class="breadcrumb-item"><i class="nav-icon fas fa-tachometer-alt" style="color:rgb(131 35 1);">&nbsp;<a href="/convert/">{% translate 'Home' %}</a></i> </li>
+<!--        <li class="breadcrumb-item"><a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a></li>-->
+        <li class="breadcrumb-item"><a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a></li>
+ <li class="breadcrumb-item active">{% translate 'Delete multiple objects' %}</li>
+    </ol>
+</div><br>
+{% endblock %}
+
+{% block content %}
+{% if perms_lacking %}
+    <p>{% blocktranslate %}Deleting the selected {{ objects_name }} would result in deleting related objects, but your account doesn't have permission to delete the following types of objects:{% endblocktranslate %}</p>
+    <ul>{{ perms_lacking|unordered_list }}</ul>
+{% elif protected %}
+    <p>{% blocktranslate %}Deleting the selected {{ objects_name }} would require deleting the following protected related objects:{% endblocktranslate %}</p>
+    <ul>{{ protected|unordered_list }}</ul>
+{% else %}
+<p style="font-size: x-large;margin-top: 3%;">{% blocktranslate %}Are you sure you want to delete the selected {{ objects_name }}? All of the following objects and their related items will be deleted:{% endblocktranslate %}</p>
+    {% include "admin/includes/object_delete_summary.html" %}
+
+{% comment %}
+    <h2>{% translate "Objects" %}</h2>
+    {% for deletable_object in deletable_objects %}
+<ul>{{ deletable_object|unordered_list }} </ul>
+     {% endfor %}
+{% endcomment %}
+
+
+    <form method="post">{% csrf_token %}
+    <div>
+    {% for obj in queryset %}
+    <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}">
+    {% endfor %}
+    <input type="hidden" name="action" value="delete_selected">
+    <input type="hidden" name="post" value="yes">
+        <br><input type="submit" value="{% translate 'Yes, I’m sure' %}" style="text-decoration: none;">
+    <a href="#"  style="margin: 0 0 0 5px; border: 2px solid black; padding: 16px; background-color: #e7e6e6; color: black; border-radius: 4px; text-decoration:none;height: 48px;" class="cancel-link">{% translate "No, take me back" %}</a>
+    </div>
+    </form>
+{% endif %}
+{% endblock %}

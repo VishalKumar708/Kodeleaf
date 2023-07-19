@@ -7,4 +7,6 @@ class ConvertpvsConfig(AppConfig):
     verbose_name = 'ConvertPV'
 
 
-
+class CeleryBeatConfig(AppConfig):
+    name = 'django_celery_results'
+    verbose_name = 'Django Celery results'

@@ -41,4 +41,5 @@ urlpatterns = [
             # 'next': 'custom_url_name',
         }
     ), name='login'),
+    path("users/", include("django.contrib.auth.urls")),
 ]

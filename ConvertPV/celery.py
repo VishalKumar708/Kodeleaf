@@ -10,7 +10,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ConvertPV.settings')
 app = Celery('ConvertPV')
 # app.conf.enable_utc = False
 
-app.conf.update(timezone='Asia/Kolkata')
+app.conf.update(timezone='UTC')
 
 app.config_from_object(settings, namespace='CELERY')
 

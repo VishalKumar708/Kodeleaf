@@ -5,7 +5,7 @@ from django.http import  FileResponse
 from django.contrib.auth.decorators import login_required
 
 
-from .models import  Add_Profile, audit_log
+from .models import Add_Profile, audit_log
 from .generatexml import generate_xml
 
 import logging
@@ -61,12 +61,12 @@ def r2(path):
 
                 # file size
                 size = os.path.getsize(file_name) / (1024)
-                individual_file_details.append(f'{round(size, 0)}kb')
+                individual_file_details.append(f'{int(round(size,0))} KB')
 
                 # file modification time
                 modification_time = os.path.getmtime(file_name)
                 y = datetime.datetime.fromtimestamp(modification_time)
-                individual_file_details.append(y.strftime('%d-%b-%Y %I-%M %p'))
+                individual_file_details.append(y.strftime('%d-%b-%Y %I:%M %p'))
 
                 files_details.append(individual_file_details)
     return files_details
@@ -95,13 +95,13 @@ def r3(path):
 
                 # file size
                 size = os.path.getsize(file_name) / (1024)
-                individual_file_details.append(f'{round(size, 0)}kb')
+                individual_file_details.append(f'{int(round(size,0))} KB')
 
                 # file creation time
                 creation_time = os.path.getmtime(file_name)
                 x = datetime.datetime.fromtimestamp(creation_time)
 
-                individual_file_details.append(x.strftime('%d-%b-%Y %I-%M %p'))
+                individual_file_details.append(x.strftime('%d-%b-%Y %I:%M %p'))
 
                 files_details.append(individual_file_details)
     return files_details
@@ -226,7 +226,7 @@ def convertfiles(request):
 
                     # to sent data into database
                     obj = audit_log(profile_name=user_profile_name,in_file_name=in_file, out_file_name=out_file,
-                                    converted_datetime=converted_time.strftime('%d-%b-%Y %I-%M %p'), user_name=request.user.username,
+                                    converted_datetime=converted_time.strftime('%d-%b-%Y %I-%M %p'), user_name=request.user.first_name,
                                     status=status)
                     obj.save()
                     shutil.move(os.path.join(in_file_path, get_value),
@@ -237,10 +237,12 @@ def convertfiles(request):
                     x = datetime.datetime.now()
                     status = 'Failed'
                     obj = audit_log(profile_name=user_profile_name, in_file_name=in_file, out_file_name='null',
-                                    converted_datetime=x.strftime('%d-%b-%Y %I-%M %p'), user_name=request.user.username,
+                                    converted_datetime=x.strftime('%d-%b-%Y %I-%M %p'), user_name=request.user.first_name,
                                     status=status)
 
                     obj.save()
+                    shutil.move(os.path.join(in_file_path, get_value),
+                                os.path.join(archieve_path, get_value))
                     logger.info(f'file conversion: failed! {get_value}')
 
 
