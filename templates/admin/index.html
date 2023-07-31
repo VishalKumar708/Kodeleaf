@@ -1,0 +1,727 @@
+{% extends "admin/base_site.html" %}
+{% load admin_menu %}
+
+{% load i18n admin_urls static admin_list %}
+
+<!-- Page title-->
+{% block title_outer %}
+        <title>{% block title %}Home | ConvertPV Portal{% endblock %}</title>
+    {% endblock %}
+
+<!--Page stylesheet link --->
+{% block extrastyle %}
+{{ block.super }}
+ <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dashboard.css' %}" />
+<style>
+    .main-container{
+
+    	display: flex;
+    }
+    .container1{
+		width:40%;
+        height: 70vh;
+	}
+    .container2{
+		width:10%;
+        height: 70vh;
+        text-align:center;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+	}
+    .container3{
+		width:50%;
+        height: 70vh;
+	}
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .filename {
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-all;
+        padding-right:1%;
+    }
+
+    .view-column {
+        width: 44px;
+    }
+    .download-column{
+        width:85px;
+    }
+    .container3 .view-column{
+        text-align: center;
+
+    }
+
+    .checkbox-column, .number-column {
+        text-align: center;
+    }
+    .number-column{
+        width: 31px;
+    }
+    .number-column-padding{
+        padding-left:1%;
+
+    }
+    .sort-icon {
+        margin-left: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .checkbox-column, .number-column {
+            padding-right: 0;
+        }
+    }
+
+    thead{
+        position:sticky;
+        background:rgb(131,35,1);
+        color:white;
+        top:0;
+    }
+    .card-footer{
+        height:8vh;
+        border-top: 1px solid rgb(194, 181, 181);
+        padding:0px;
+        display:flex;
+        align-items:center;
+    }
+    .card{
+        border:3px solid rgb(131,35,1);
+    }
+    .card-header{
+        text-align: center;
+        padding:0px;
+    }
+    .card-body{
+        padding:0px;
+    }
+
+    .view-button, .download-button{
+        border: 1px solid black;
+        background: #ffffff;
+        padding: 2%;
+        color: #832301;
+        border-radius: 4px;
+
+    }
+    .view-button a, .download-button a {
+        text-decoration:none;
+    }
+    .r2-button-disabled,.r3-button-disabled {
+        pointer-events:auto;
+    }
+
+</style>
+
+{% endblock %}
+
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+{% if not is_popup %}
+
+<!--you can add css -->
+{% block breadcrumbs %}
+
+
+{% endblock %}
+{% endif %}
+
+{% block stylesheets %}
+        {% include 'adminlte/lib/_styles.html' %}
+{% endblock %}
+
+
+{% block content %}
+<script>
+    var sortDirection = {
+        "#": 1,
+        "Filename": 1,
+        "Size": 1,
+        "Datetime": 1
+    };
+
+    function sortTable(column,table_name) {
+
+        debugger;
+
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById(table_name);
+        switching = true;
+        var direction = sortDirection[column];
+
+        // Toggle the sort direction
+        sortDirection[column] = direction === 1 ? -1 : 1;
+
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[column];
+                y = rows[i + 1].getElementsByTagName("TD")[column];
+                if (direction === 1) {
+                    if(Date.parse(x.innerHTML.toLowerCase()) > 0)
+                    {
+                    let date1 = new Date(Date.parse(x.innerHTML.toLowerCase())).getTime();
+                    let date2 = new Date(Date.parse(y.innerHTML.toLowerCase())).getTime();
+                    if (date1 > date2) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                    }
+                    else
+                    {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                    }
+                }
+                else {
+                 if(Date.parse(x.innerHTML.toLowerCase()) > 0)
+                    {
+                    let date1 = new Date(Date.parse(x.innerHTML.toLowerCase())).getTime();
+                    let date2 = new Date(Date.parse(y.innerHTML.toLowerCase())).getTime();
+                    if (date1 < date2) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                    }
+                else
+                    {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+        // Update the sort icon
+        if(table_name=='tableR2')
+        {
+              updateSortIconsR2(column);
+        }
+        else
+        {
+               updateSortIconsR3(column);
+        }
+    }
+
+    function updateSortIconsR2(column) {
+        var sortIcons = document.getElementsByClassName("sort-icon");
+
+        // Reset sort icons
+        for (var i = 0; i < sortIcons.length; i++) {
+            sortIcons[i].classList.remove("fa-sort-up", "fa-sort-down");
+            sortIcons[i].classList.add("fa-sort");
+        }
+
+        var sortIcon = document.getElementById("sortIcon-" + column);
+        var direction = sortDirection[column];
+        var iconClass = direction === 1 ? "fa-sort-up" : "fa-sort-down";
+        sortIcon.classList.remove("fa-sort");
+        sortIcon.classList.add(iconClass);
+    }
+    function updateSortIconsR3(column) {
+        var sortIcons = document.getElementsByClassName("sort-iconr3");
+
+        // Reset sort icons
+        for (var i = 0; i < sortIcons.length; i++) {
+            sortIcons[i].classList.remove("fa-sort-up", "fa-sort-down");
+            sortIcons[i].classList.add("fa-sort");
+        }
+
+        var sortIcon = document.getElementById("sortIconr3-" + column);
+        var direction = sortDirection[column];
+        var iconClass = direction === 1 ? "fa-sort-up" : "fa-sort-down";
+        sortIcon.classList.remove("fa-sort");
+        sortIcon.classList.add(iconClass);
+    }
+</script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script type="text/javascript">
+    window.onload = function() {
+     $('#xml-all-checkbox').click(function () {
+            if ($(this).is(':checked')) {
+                <!-- if 'all R2' checked box are checked.-->
+                $(".left_select").prop('checked', true)
+                $(".xml-check").prop('disabled', true);
+                $('.r2-button-disabled').css('pointer-events', 'none');
+                $('.xml-check').css('background-color','#dadbdc');
+                $('.xml-check').css('opacity','1');
+                $('.xml-check').css('color','linen');
+            }
+            else {
+               <!-- if 'all R2 ' checked box are 'unchecked'.-->
+                $(".left_select").prop('checked', false)
+                $(".xml-check").prop('disabled', false);
+                $('.r2-button-disabled').css('pointer-events', 'auto');
+                $('.xml-check').css('background-color','white');
+                $('.xml-check').css('opacity','1');
+                $('.xml-check').css('color','none');
+
+
+            }
+        });
+
+        $('#json-all-checkbox').click(function () {
+            if ($(this).is(':checked')) {
+                <!-- if 'all R3' checked box are checked.-->
+                $(".right_select").prop('checked', true)
+                $(".downbtn").prop('disabled', true);
+                $(".json-check").prop('disabled', true);
+                $('.r3-button-disabled').css('pointer-events', 'none');
+
+                $('.json-check').css('background-color','#dadbdc');
+                $('.json-check').css('opacity','1');
+                $('.json-check').css('color','linen');
+                $('.downbtn').css('background-color','#dadbdc');
+                $('.downbtn').css('opacity','1');
+                $('.downbtn').css('color','linen');
+            }
+            else {
+               <!-- if 'all R3 ' checked box are 'unchecked'.-->
+                $(".right_select").prop('checked', false)
+                $(".downbtn").prop('disabled', false);
+                $(".json-check").prop('disabled', false);
+                $('.r3-button-disabled').css('pointer-events', 'auto');
+
+                $('.json-check').css('background-color','white');
+                $('.json-check').css('opacity','1');
+                $('.json-check').css('color','none');
+                $('.downbtn').css('background-color','white');
+                $('.downbtn').css('opacity','1');
+                $('.downbtn').css('color','color');
+
+
+            }
+        });
+
+
+        $('.right_select').click(function() {
+            var numChecked = $('.right_select:checked').length;
+            if (numChecked == 1) {
+                <!-- if only one checked box checked.-->
+                var id = $('.right_select:checked')[0].id;
+                var temp = "#downloadButton".concat(id.slice(8));
+                var vtemp = "#jsonView".concat(id.slice(8));
+
+                <!-- apply pointer disabled on all view and download button-->
+                $('.r3-button-disabled').css('pointer-events', 'none');
+
+                <!--  disable all download button and apply css also-->
+                $(".downbtn").prop('disabled', true);
+                $('.downbtn').css('background-color','#dadbdc');
+                $('.downbtn').css('opacity','1');
+                $('.downbtn').css('color','linen');
+
+
+                <!--  enable only 'checked download' button -->
+                $(temp).css('background-color','white');
+                $(temp).css('opacity','1');
+                $(temp).css('color','none');
+                $(temp).attr('disabled', false);
+                $(temp).find('a').css('pointer-events', 'auto');
+
+
+                <!-- disable all 'view button' and apply css also-->
+
+                $(".json-check").prop('disabled', true);
+                $('.json-check').css('background-color','#dadbdc');
+                $('.json-check').css('opacity','1');
+                $('.json-check').css('color','linen');
+
+                <!--  enable only 'checked view' button -->
+                $(vtemp).css('background-color','white');
+                $(vtemp).css('opacity','1');
+                $(vtemp).css('color','none');
+                $(vtemp).attr('disabled', false);
+                $(vtemp).find('a').css('pointer-events', 'auto');
+
+
+            }
+            else if (numChecked > 1) {
+              <!-- if more than one checked box checked.-->
+                $(".downbtn").prop('disabled', true);
+                $(".json-check").prop('disabled', true);
+                $('.r3-button-disabled').css('pointer-events', 'none');
+
+                <!-- disabled all 'view' buttons  -->
+                $('.json-check').css('background-color','#dadbdc');
+                $('.json-check').css('opacity','1');
+                $('.json-check').css('color','linen');
+
+                 <!-- disabled all 'download' buttons  -->
+                $('.downbtn').css('background-color','#dadbdc');
+                $('.downbtn').css('opacity','1');
+                $('.downbtn').css('color','linen');
+
+
+            }
+            else {
+               <!-- if no single checked box checked.-->
+                $(".downbtn").prop('disabled', false);
+                $(".json-check").prop('disabled', false);
+                $('.r3-button-disabled').css('pointer-events', 'auto');
+
+                <!-- enabled all 'view' buttons  -->
+                $('.json-check').css('background-color','white');
+                $('.json-check').css('opacity','1');
+                $('.json-check').css('color','none');
+
+                <!-- enabled all 'download' buttons  -->
+                $('.downbtn').css('background-color','white');
+                $('.downbtn').css('opacity','1');
+                $('.downbtn').css('color','color');
+            }
+        });
+
+
+        $('.left_select').click(function () {
+            var numChecked = $('.left_select:checked').length;
+            if (numChecked == 1) {
+            debugger;
+                var id = $('.left_select:checked')[0].id;
+                var temp = "#xmlView".concat(id.slice(9));
+
+                $(".xml-check").prop('disabled', true);
+                $('.r2-button-disabled').css('pointer-events', 'none');
+                $('.xml-check').css('background-color','#dadbdc');
+                $('.xml-check').css('opacity','1');
+                $('.xml-check').css('color','linen');
+
+                $(temp).attr('disabled', false);
+                $(temp).prop('checked', false)
+                $(temp).prop('disabled', false);
+                $(temp).css('pointer-events', 'auto');
+                $(temp).css('background-color','white');
+                $(temp).css('opacity','1');
+                $(temp).css('color','none');
+
+                $(temp).find('a').css('pointer-events', 'auto');
+
+
+
+
+            }
+            else if (numChecked > 1) {
+                $(".xml-check").prop('disabled', true);
+                $('.r2-button-disabled').css('pointer-events', 'none');
+                $('.xml-check').css('background-color','#dadbdc');
+                $('.xml-check').css('opacity','1');
+                $('.xml-check').css('color','linen');
+            }
+            else {
+                $(".left_select").prop('checked', false)
+                $(".xml-check").prop('disabled', false);
+                $('.r2-button-disabled').css('pointer-events', 'auto');
+                $('.xml-check').css('background-color','white');
+                $('.xml-check').css('opacity','1');
+                $('.xml-check').css('color','none');
+            }
+        });
+}
+function downloadall(){
+    if ($('.right_select:checked').length < 1)
+    {
+        alert('No files selected for Download');
+        return;
+    }
+    var numChecked = $('.right_select:checked')[0].value;
+    var file_names;
+    for (var i =0; i<$('.right_select:checked').length; i++){
+        if (file_names==null){
+            file_names = $('.right_select:checked')[i].value;
+        }
+        else{
+            file_names += ","+$('.right_select:checked')[i].value
+        }
+    }
+            $.ajax({
+url: "downloadzip/",
+xhrFields: {
+        responseType: 'blob'
+    },
+type: 'get',
+    data:{
+             post_id: file_names
+    },
+success: function(data) {
+    var a = document.createElement('a');
+        var url = window.URL.createObjectURL(data);
+        a.href = url;
+        a.download = 'SelectedFiles.zip';
+        document.body.append(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+},
+failure: function(data) {
+    alert('Encountered an error');
+}
+});
+
+    }
+function convertfiles(){
+    if ($('.left_select:checked').length < 1)
+    {
+        alert('Please! Select file to convert');
+        return;
+    }
+    var numChecked = $('.left_select:checked')[0].value;
+    var file_names;
+    for (var i =0; i<$('.left_select:checked').length; i++){
+        if (file_names==null){
+            file_names = $('.left_select:checked')[i].value;
+        }
+        else{
+            file_names += ","+$('.left_select:checked')[i].value
+        }
+    }
+            $.ajax({
+               url: "convert/",
+                type: 'GET',
+                data:{
+                    post_id: file_names
+                },
+                success: function(data) {
+                    location.reload();
+                },
+                failure: function(data) {
+                    location.reload();
+                }
+                });
+
+    }
+
+
+
+    function validate(){
+        const dropDownList = document.getElementById('profile');
+        const selectedValue = dropDownList.value;
+        if ($('.right_select:checked').length < 1)
+    {
+        alert('No files selected for Validation');
+        return;
+    }
+    var numChecked = $('.right_select:checked')[0].value;
+    var file_names;
+    for (var i =0; i<$('.right_select:checked').length; i++){
+        if (file_names==null){
+            file_names = $('.right_select:checked')[i].value;
+        }
+        else{
+            file_names += ","+$('.right_select:checked')[i].value
+        }
+    }
+        console.log("Selected Value:", selectedValue);
+        $.ajax({
+            url: "validate/",
+            type: 'GET',
+            data:{
+                    profile_id:selectedValue,
+                    file_name:file_names
+                },
+
+            success: function(data) {
+                alert(data);
+            },
+            failure: function(data) {
+                alert(data);
+            }
+            });
+
+    }
+</script>
+
+<div style="display: inline-flex;padding-left: 37%;margin-bottom: 0.5rem;">
+
+
+    <label >Select Profile&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <div class="selectdrop">
+        <select name="profile" id="profile" style="width:200px;margin-right:8%; margin-bottom:1%;">
+            {% for i in allprofile %}
+                        <option value="{{i.profile_id}}">{{ i.profile_name }}</option>
+            {% endfor %}
+
+        </select>
+
+    </div>
+</div><br>
+    <div class="container-fluid">
+  <div class="row main-container">
+    <div class='container1'>
+
+        <div class="card" style="max-width: 100%; height: 100%;">
+        <div class="card-header bg-transparent border-success">R2 Files</div>
+
+        <div class="card-body" style="height:50vh;overflow: scroll;overflow-y: scroll;">
+
+            <form method="post" id="a-form" >
+                {% csrf_token %}
+                <table id="tableR2">
+                    <thead class="left">
+                        <tr>
+                            <th  class="number-column number-column-padding">#
+<!--                                <i id="sortIcon-0" class="sort-icon fas fa-sort"> </i>-->
+                            </th>
+                            <th class="checkbox-column">
+                                <input type="checkbox" id="xml-all-checkbox">
+                            </th>
+                            <th onclick="sortTable(2,'tableR2')">Filename
+                                <i id="sortIcon-2" class="sort-icon fas fa-sort"></i>
+                            </th>
+                            <th onclick="sortTable(3,'tableR2')">Size
+                                <i id="sortIcon-3" class="sort-icon fas fa-sort"></i>
+                            </th>
+                            <th onclick="sortTable(4,'tableR2')">Datetime
+                                <i id="sortIcon-4" class="sort-icon fas fa-sort"></i>
+                            </th>
+                            <th class="view-column">View</th>
+                        </tr>
+                    </thead>
+                    <tbody class="left">
+                        {% for i in r2_files %}
+                        <tr>
+                            <td class="number-column-padding">{{ forloop.counter }}</td>
+                            <td class="checkbox-column"><input type="checkbox" id="xml_check{{forloop.counter}}"  value={{i.0}}  class="left_select"  name="file{{ forloop.counter }}"></td>
+                            {% for j in i %}
+                                {% if forloop.counter == 1 %}
+                                    <td class="filename">{{ j }}</td>
+                                {% endif %}
+
+                                {% if forloop.counter == 2 %}
+                                    <td >{{ j }}</td>
+                                {% endif %}
+                                {% if forloop.counter == 3 %}
+                                    <td >{{ j }}</td>
+                                {% endif %}
+                            {% endfor %}
+
+                            <td ><button class="xml-check view-button" id="xmlView{{forloop.counter}}"><a class="r2-button-disabled" href="{{i.0}}/r2" target="_blank" style="text-decoration:none; color:#832301;width: 3rem;" >view</a></button></td>
+                        </tr>
+                        {% endfor %}
+                        <input type="hidden" name="number" value="{{ r2_count }}">
+                    </tbody>
+                </table>
+            </form>
+            </div>
+
+            <div class="card-footer">
+                <div style="position: absolute; left:1%;">
+                    <small class="text-muted" style="padding-left: 5px;">Total Files : <b>{{r2_count}}</b></small>
+                </div>
+            </div>
+            </div>
+
+
+    </div>
+
+    <div class='container2'>
+        <button onclick="convertfiles()"  class="btn w-auto m-3 " style="background-color:rgb(131 35 1); color:white"><b>Convert</b></button>
+    </div>
+
+    <div class='container3'>
+        <div class="card  mb-3" style="max-width: 100%; height: 100%;">
+            <div class="card-header ">R3 Files</div>
+
+            <div class="card-body " style="height:50vh;overflow: scroll;overflow-y: scroll;">
+
+
+                <table id="tableR3">
+                    <thead class="right">
+                        <tr>
+                            <th  class="number-column number-column-padding">#
+<!--                                <i id="sortIcon-0" class="sort-icon fas fa-sort"> </i>-->
+                            </th>
+                            <th class="checkbox-column"><input type="checkbox" id="json-all-checkbox"></th>
+                            <th onclick="sortTable(2,'tableR3')">Filename
+                                <i id="sortIconr3-2" class="sort-iconr3 fas fa-sort"></i>
+                            </th>
+                            <th onclick="sortTable(3,'tableR3')">Size
+                                <i id="sortIconr3-3" class="sort-iconr3 fas fa-sort"></i>
+                            </th>
+                            <th onclick="sortTable(4,'tableR3')">Datetime
+                                <i id="sortIconr3-4" class="sort-iconr3 fas fa-sort"></i>
+                            </th>
+                            <th class="view-column">View</th>
+                            <th class="download-column">Download</th>
+                        </tr>
+                    </thead>
+                    <tbody class="right">
+                        {% for i in r3_files %}
+                        <tr>
+                            <td class="number-column-padding">{{ forloop.counter }}</td>
+                            <td class="checkbox-column"> <input type="checkbox" class="right_select" id="rt-check{{forloop.counter}}" value={{i.0}} name="json_file{{forloop.counter}}"></td>
+
+                            {% for j in i %}
+                                {% if forloop.counter == 1 %}
+                                    <td class="filename"> {{ j }} </td>
+                                {% endif %}
+                                {% if forloop.counter == 2 %}
+                                    <td> {{ j }} </td>
+                                {% endif %}
+                                {% if forloop.counter == 3 %}
+                                    <td> {{ j }} </td>
+                                {% endif %}
+                        {% endfor %}
+                            <td><button disabled class="view-column  json-check view-button" id="jsonView{{forloop.counter}}"><a class="r3-button-disabled" href="{{i.0}}/r3" target="_blank"  >view</a></button></td>
+                            <td><button disabled class="download-column downbtn download-button" id="downloadButton{{forloop.counter}}"><a class="r3-button-disabled" href="{{i.0}}/r3/r3" target="_blank">Download</a></button></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="card-footer ">
+                <div class="p-2" style="display: inline-block;width: 100%;">
+                    <small class="text-muted" id="no_of_file" style="position: absolute;left:1%;padding-left: 5px;padding-top:2% ;">Total Files : <b>{{ r3_count }}</b></small>
+                     <div   style="display: inline;float:right;padding-right:1%;">
+                         <button onclick="validate()" class="btn w-auto m-1 " style="background-color:#861717;color:white" ><b>Validate</b>
+                         </button>
+
+
+                     <button type="submit" onclick="downloadall()" class="btn w-auto m-1 " style="background-color:#861717;color:white;font-weight: bold;" data-bs-dismiss="modal">Download Selected</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+
+
+
+    {% endblock %}
+
+
+
+
+
+

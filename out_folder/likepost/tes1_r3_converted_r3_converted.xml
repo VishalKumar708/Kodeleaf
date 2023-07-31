@@ -1,0 +1,6 @@
+<note>
+<to>Tove</to>
+<from>Jani</from>
+<heading>Reminder</heading>
+<body>Don't forget me this weekend!</body>
+<a x="1" y="abc">body text</a><a x="1" y="abc">body text</a></note>
