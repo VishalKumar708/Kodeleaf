@@ -30,6 +30,7 @@ def assign_path():
 
 logger = logging.getLogger('convertpvs')
 
+
 def scheduled():
     assign_path()
     files = os.listdir(in_file_path)

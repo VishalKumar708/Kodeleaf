@@ -13,10 +13,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), unique=True)
     is_staff = models.BooleanField(default=False, verbose_name='Is Member')
     is_active = models.BooleanField(default=True)
-    date_joined = models.DateTimeField(default=timezone.now, verbose_name = 'Creation Date')
+    date_joined = models.DateTimeField(default=timezone.now, verbose_name='Creation Date')
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = CustomUserManager()
 
@@ -28,11 +28,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = "users"
 
 
-
-
 class CustomGroup(Group):
-
-    # Add custom fields or methods here
     class Meta:
         verbose_name = "group"
         verbose_name_plural = "groups"

@@ -15,6 +15,7 @@ from django.contrib.auth.forms import AdminPasswordChangeForm
 
 
 class CustomUserAdmin(ExportActionMixin,UserAdmin):
+
     readonly_fields = ('date_joined',)
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm

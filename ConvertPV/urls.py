@@ -26,7 +26,7 @@ admin.site.site_title = "ConvertPV Portal"
 admin.site.index_title = "Welcome to ConvertPV Portal"
 
 urlpatterns = [
-    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+    # url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     path('admin/', admin.site.urls),
     path('convert/', include('convertpvs.urls')),
     path('', auth_views.LoginView.as_view(

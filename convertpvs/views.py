@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import  FileResponse
+from django.http import FileResponse
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Add_Profile, audit_log
@@ -13,6 +13,7 @@ import shutil
 import glob
 import zipfile
 import datetime
+
 
 # folder paths
 # gloabal variables
@@ -30,10 +31,10 @@ def assign_path():
         out_file_path = firstprofile.out_file_path
         archieve_path = firstprofile.archieve_path
         user_profile_name = firstprofile.profile_name
-
     else:
         logger = logging.getLogger('convertpvs')
         logger.error('file path is not set.')
+
 
 logger = logging.getLogger('convertpvs')
 def r2(path):

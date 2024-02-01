@@ -347,3 +347,6 @@ tz
 2023-07-29 13:41:48,588 INFO file conversion: success! demo8.xml
 2023-07-30 20:06:32,485 ERROR D:\in_path\demo3.xml no element found: line 1, column 0
 2023-07-30 20:06:32,501 ERROR D:\in_path\demo13.xml no element found: line 1, column 0
+2023-10-31 14:34:10,469 ERROR file path is not set.
+2023-10-31 14:53:32,350 ERROR file path is not set.
+2023-10-31 14:55:41,690 ERROR file path is not set.

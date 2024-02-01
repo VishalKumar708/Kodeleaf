@@ -1,0 +1,4 @@
+2023-10-20 10:42:26,770 INFO XML validation successful1. Temp path: D:\out_path\temp, Log path: logger/log_20102023104226.log
+2023-10-20 10:46:03,551 INFO demo11.xml,demo10.xml
+2023-10-20 10:46:03,595 INFO file conversion: success! demo11.xml
+2023-10-20 10:46:03,612 INFO file conversion: success! demo10.xml
