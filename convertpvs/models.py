@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 class Add_Profile(models.Model):
     profile_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='id')
